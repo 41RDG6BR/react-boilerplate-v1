@@ -4,6 +4,7 @@ import DashboardLayout from 'src/layouts/DashboardLayout';
 import MainLayout from 'src/layouts/MainLayout';
 import AccountView from 'src/views/account/AccountView';
 import CustomerListView from 'src/views/customer/CustomerListView';
+import AddCustomerView from 'src/views/customer/CustomerListView/add/AddCustomerView';
 import DashboardView from 'src/views/reports/DashboardView';
 import LoginView from 'src/views/auth/LoginView';
 import NotFoundView from 'src/views/errors/NotFoundView';
@@ -18,7 +19,7 @@ const routes = (signed) => [
     children: [
       { path: 'account', element: <AccountView /> },
       { path: 'customers', element: <CustomerListView /> },
-      { path: 'addcustomer', element: <AddCustomer /> },
+      { path: 'addcustomer', element: <AddCustomerView /> },
       { path: 'dashboard', element: <DashboardView /> },
       { path: 'products', element: <ProductListView /> },
       { path: 'settings', element: <SettingsView /> },
@@ -36,9 +37,5 @@ const routes = (signed) => [
   { path: '404', element: <NotFoundView /> },
   { path: '*', element: <Navigate to="/404" /> }
 ];
-
-const AddCustomer = () => (
-  <h1>Add customer</h1>
-);
 
 export default routes;
