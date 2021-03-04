@@ -1,45 +1,38 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/be-mern-insta')
-// const postSchema = mongoose.Schema({
-//     id: 1,
-//     address: {
-//         country: String,
-//         state: String,
-//         city: String,
-//         street: String
-//     },
-//     selectedFile: String,
-//     createdAt: {
-//         type: Date,
-//         default: new Date(),
-//     },
-//     email: String,
-//     name: String,
-//     phone: String
-// })
-
-// var PostMessage = mongoose.model('PostMessage', postSchema);
-
-// module.exports = PostMessage;
-
+mongoose.connect('mongodb://localhost/be-mern-insta');
 
 const Schema = mongoose.Schema;
 
 const _schema ={
-    country: String,
-    state: String,
-    city: String,
-    street: String
-
+    address: {
+        country: String,
+        state: String,
+        city: String,
+        street: String
+    },
+        selectedFile: String,
+    created_at: {
+        type: Date,
+        default: Date.now,
+    },
+        email: String,
+        name: String,
+        phone: Number
 }
 
 const customerSchema = new Schema(_schema);
 
 const data = {
-    country: 'Brasil',
-    state: 'PR',
-    city: 'Curitiba',
-    street: 'Rua, nicaragua'
+    address: {
+        country: 'Brasil',
+        state: 'PR',
+        city: 'Curitiba',
+        street: 'Rua, nicaragua'
+    },
+        selectedFile: 'file',  
+        email: 'rnogueira@gmail.com',
+        name: 'Rodrigo Nogueira',
+        phone: +5541988889876
 };
 
 const Model = mongoose.model('customers', customerSchema)
@@ -50,4 +43,6 @@ cust.save(function (err, data){
 })
 
 console.log('Schema', customerSchema)
-// module.exports = customerSchema;
+
+module.exports = customerSchema;
+
