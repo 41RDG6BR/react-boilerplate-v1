@@ -1,5 +1,6 @@
+require('./config');
+
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/be-mern-insta');
 
 const Schema = mongoose.Schema;
 
