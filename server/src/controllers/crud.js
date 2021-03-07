@@ -15,7 +15,8 @@ const CRUD = {
                 state: 'West Virginia',
                 city: 'Parkersburg',
                 street: '2849 Fulton Street'
-              }              
+              }        
+                  
         }
         const Rodrigo = new Model(data);
         Rodrigo.save(function(err, data){
