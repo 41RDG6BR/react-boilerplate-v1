@@ -5,7 +5,18 @@ const Model = require('../models/model')(Schema, 'Customer');
 
 const CRUD = {
     create: function() {
-        const data = { name: 'Rodrigo' }
+        const data = { 
+            name: 'Rodrigo Nogueira',
+            email: 'nogueira@gmail.com',
+            phone: +554198665868,
+            avatarUrl: '/static/images/avatars/avatar_3.png',
+            address: {
+                country: 'USA',
+                state: 'West Virginia',
+                city: 'Parkersburg',
+                street: '2849 Fulton Street'
+              }              
+        }
         const Rodrigo = new Model(data);
         Rodrigo.save(function(err, data){
             if(err) return  console.log('ERRO: ', err);
@@ -32,7 +43,7 @@ const CRUD = {
     },
     delete: function() {
         const query = { name : /rodrigo/i};
-        
+
         Model.remove(query, function (err, data) {
             if(err) return console.log('ERRO: ', err);
             return console.log('Deletou: ', data);
