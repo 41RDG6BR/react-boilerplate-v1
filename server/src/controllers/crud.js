@@ -1,11 +1,11 @@
 require('../db/config');
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 const Schema = require('../schema');
 const Model = require('../models/model')(Schema, 'Customer');
 
-const CRUD = {
-    create: function() {
-        const data = { 
+class CRUD {
+    create(data) {
+        data = { 
             name: 'Rodrigo Nogueira',
             email: 'nogueira@gmail.com',
             phone: +554198665868,
@@ -15,24 +15,32 @@ const CRUD = {
                 state: 'West Virginia',
                 city: 'Parkersburg',
                 street: '2849 Fulton Street'
-              }        
+            }        
                   
         }
         const Rodrigo = new Model(data);
-        Rodrigo.save(function(err, data){
-            if(err) return  console.log('ERRO: ', err);
-            return console.log('Inseriu: ', data);
+        return Rodrigo.save().then((data) => {
+            console.log('Inseriu: ', data);
+            return data
         });
-    },
-    retrive: function() {
+    }
+    list(){
+        const query = {};
+
+        return Model.find(query).then((data)=>{
+            console.log('Buscou: ', data);
+            return data
+        });
+    }
+    retrive() {
         const query = { name : /rodrigo/i};
 
         Model.find(query, function (err, data) {
             if(err) return console.log('ERRO: ', err);
             return console.log('Buscou: ', data);
         });
-    },
-    update: function() {
+    }
+    update() {
         const query = { name : /rodrigo/i};
         const mod = { name: 'Rodrigo Nogueira' };
         const options = { multi: true };
@@ -41,8 +49,8 @@ const CRUD = {
             if(err) return console.log('ERRO: ', err);
             return console.log('Alterou: ', data);
         });
-    },
-    delete: function() {
+    }
+    delete() {
         const query = { name : /rodrigo/i};
 
         Model.remove(query, function (err, data) {
@@ -52,4 +60,4 @@ const CRUD = {
     }
 }
 
-CRUD.create();
+module.exports = CRUD

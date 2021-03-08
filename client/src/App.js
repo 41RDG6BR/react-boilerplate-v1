@@ -9,9 +9,15 @@ import routes from 'src/routes';
 import { Context } from 'src/context/AuthContext';
 
 const App = () => {
-  const { signed } = useContext(Context);
-
+  const { signed, loading } = useContext(Context);
   const routing = useRoutes(routes(signed));
+
+  if (loading) {
+    return (
+      <>Loading</>
+    );
+  }
+  console.log(signed);
 
   return (
     <ThemeProvider theme={theme}>
