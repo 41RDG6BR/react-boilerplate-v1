@@ -14,11 +14,11 @@ import SettingsView from 'src/views/settings/SettingsView';
 
 const routes = (signed) => [
   {
-    path: '/app',
+    path: 'app',
     element: signed ? <DashboardLayout /> : <Navigate to="/login" />,
     children: [
       { path: 'account', element: <AccountView /> },
-      { path: '/customers', element: <CustomerListView /> },
+      { path: 'customers', element: <CustomerListView /> },
       { path: 'addcustomer', element: <AddCustomerView /> },
       { path: 'dashboard', element: <DashboardView /> },
       { path: 'products', element: <ProductListView /> },
