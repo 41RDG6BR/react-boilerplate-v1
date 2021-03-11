@@ -61,7 +61,7 @@ const ProfileDetails = ({ className, ...rest }) => {
       handleChange(e, rest.axios.postCustomer(values));
     }
     const data = values;
-    console.log(data);
+    return data;
   };
 
   return (

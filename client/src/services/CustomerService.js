@@ -5,8 +5,15 @@ const getAll = async () => {
   return data;
 };
 
-const postCustomer = async () => {
-  const data = await axios.post('users');
+const postCustomer = async (firstName, lastName, email, phone, state, country) => {
+  const data = await axios.post('users', {
+    firstName,
+    lastName,
+    email,
+    phone,
+    state,
+    country
+  });
   return data;
 };
 
