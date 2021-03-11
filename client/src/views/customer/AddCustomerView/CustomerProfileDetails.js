@@ -60,7 +60,8 @@ const ProfileDetails = ({ className, ...rest }) => {
       && values.country) {
       handleChange(e, rest.axios.postCustomer(values));
     }
-    console.log(values);
+    const data = values;
+    console.log(data);
   };
 
   return (
