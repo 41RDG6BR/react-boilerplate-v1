@@ -1,10 +1,8 @@
 import axios from '../axios';
 
 const getAll = async () => {
-  return axios.get('/users').then((data) => {
-    console.log('Buscou: ', data);
-    return data;
-  });
+  const data = await axios.get('users');
+  return data;
 };
 
 const get = (id) => {
