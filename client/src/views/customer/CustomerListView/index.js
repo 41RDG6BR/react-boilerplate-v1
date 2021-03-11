@@ -7,7 +7,7 @@ import {
 import Page from 'src/components/Page';
 import Results from './Results';
 import Toolbar from './Toolbar';
-import axios from '../../../axios';
+import axios from '../../../services/CustomerService';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,7 +24,7 @@ const CustomerListView = () => {
 
   useEffect(() => {
     (async () => {
-      const { data } = await axios.get('/users');
+      const { data } = await axios.getAll();
       console.log(data);
       setCustomers(data);
     })();

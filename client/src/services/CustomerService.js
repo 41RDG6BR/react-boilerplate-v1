@@ -1,7 +1,10 @@
 import axios from '../axios';
 
-const getAll = () => {
-  return axios.get('/users');
+const getAll = async () => {
+  return axios.get('/users').then((data) => {
+    console.log('Buscou: ', data);
+    return data;
+  });
 };
 
 const get = (id) => {
