@@ -5,8 +5,9 @@ const getAll = async () => {
   return data;
 };
 
-const get = (id) => {
-  return axios.get(`/users/${id}`);
+const postCustomer = async () => {
+  const data = await axios.post('users');
+  return data;
 };
 
 const create = (data) => {
@@ -31,7 +32,7 @@ const findByTitle = (title) => {
 
 export default {
   getAll,
-  get,
+  postCustomer,
   create,
   update,
   remove,

@@ -35,19 +35,32 @@ const useStyles = makeStyles(() => ({
 const ProfileDetails = ({ className, ...rest }) => {
   const classes = useStyles();
   const [values, setValues] = useState({
-    firstName: 'Katarina',
-    lastName: 'Smith',
-    email: 'demo@devias.io',
+    firstName: '',
+    lastName: '',
+    email: '',
     phone: '',
-    state: 'Alabama',
-    country: 'USA'
+    state: '',
+    country: ''
   });
-
+  console.log(rest);
   const handleChange = (event) => {
     setValues({
       ...values,
       [event.target.name]: event.target.value
     });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (values.firstName
+      && values.lastName
+      && values.email
+      && values.phone
+      && values.state
+      && values.country) {
+      handleChange(e, rest.axios.postCustomer(values));
+    }
+    console.log(values);
   };
 
   return (
@@ -181,6 +194,7 @@ const ProfileDetails = ({ className, ...rest }) => {
           <Button
             color="primary"
             variant="contained"
+            onClick={handleSubmit}
           >
             Save customer
           </Button>

@@ -7,6 +7,7 @@ import {
 import Page from 'src/components/Page';
 import CustomerProfile from './CustomerProfile';
 import CustomerProfileDetails from './CustomerProfileDetails';
+import axios from '../../../services/CustomerService';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,7 +45,7 @@ const Customer = () => {
             md={6}
             xs={12}
           >
-            <CustomerProfileDetails />
+            <CustomerProfileDetails axios={axios} />
           </Grid>
         </Grid>
       </Container>
