@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const _schema ={
+const _schema = {
     name: String,
     email: String,
     phone: Number,
@@ -10,7 +10,7 @@ const _schema ={
         type: Date,
         default: Date.now,
     },
-    avatarUrl: String,
+    avatarUrl: {},
     address: {
         country: String,
         state: String,

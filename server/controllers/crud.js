@@ -1,23 +1,9 @@
 require('../db/config');
-// const mongoose = require('mongoose');
 const Schema = require('../schema');
 const Model = require('../models/model')(Schema, 'Customer');
 
 class CRUD {
     create(data) {
-        data = { 
-            name: 'Rodrigo Nogueira',
-            email: 'nogueira@gmail.com',
-            phone: +554198665868,
-            avatarUrl: '/static/images/avatars/avatar_3.png',
-            address: {
-                country: 'USA',
-                state: 'West Virginia',
-                city: 'Parkersburg',
-                street: '2849 Fulton Street'
-            }        
-                  
-        }
         const Rodrigo = new Model(data);
         return Rodrigo.save().then((data) => {
             console.log('Inseriu: ', data);

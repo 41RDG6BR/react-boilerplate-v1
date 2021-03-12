@@ -40,9 +40,12 @@ const ProfileDetails = ({ className, ...rest }) => {
     email: '',
     phone: '',
     state: '',
-    country: ''
+    country: '',
+    file: ''
   });
-  console.log(rest);
+
+  console.log(values);
+
   const handleChange = (event) => {
     setValues({
       ...values,
@@ -63,6 +66,23 @@ const ProfileDetails = ({ className, ...rest }) => {
     const data = values;
     return data;
   };
+
+  onFormSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('myfile',values.file);
+    const config = {
+        headers: {
+            'content-type': 'multipart/form-data'
+        }
+    };
+    axios.post("http://localhost:5000/upload", formData, config)
+        .then((response) => {
+            alert("The file is successfully uploaded");
+        }).catch((error) => {
+            alert(error);
+    });
+  }
 
   return (
     <form
