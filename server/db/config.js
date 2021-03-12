@@ -1,7 +1,11 @@
 const mongoose =  require('mongoose');
 const dbURI = 'mongodb://localhost/be-mern-insta'
 
-mongoose.connect(dbURI);
+mongoose.connect(dbURI, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: true
+});
 
 mongoose.connection.on('connected', function () {
     console.log('Mongoose default connection open to' + dbURI);
